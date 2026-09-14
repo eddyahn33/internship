@@ -1,4 +1,4 @@
-def PROT(path):
+def PROT(RNA):
     codon_table = {
     "UUU": "F",
     "UUC": "F",
@@ -66,17 +66,20 @@ def PROT(path):
     "GGG": "G"  
     }
 
-    with open(path, 'r') as file:
-        RNA = file.read()
-        protein = []
-        for i in range(0, len(RNA)-2,3):
-            codon = RNA[i:i+3]
-            AA = codon_table[codon]
-
-            if AA == "Stop":
-                break
-            protein.append(AA)
+    protein = []
+    stopped = False
+    for i in range(0, len(RNA)-2,3):
+        codon = RNA[i:i+3]
+        AA = codon_table[codon]
+        if AA == "Stop":
+            stopped = True
+            break
+        else: protein.append(AA)
+    if stopped :
         print("".join(protein))
-    file.close
 
-PROT('/mnt/c/Users/eddya/vscode101/rosalind_solved/rosalind_prot.txt')
+if __name__ == "__main__":
+    with open('/mnt/c/Users/eddya/vscode101/rosalind_solved/rosalind_prot.txt', 'r') as file:
+        RNA = file.read()
+        file.close
+    PROT(RNA)
