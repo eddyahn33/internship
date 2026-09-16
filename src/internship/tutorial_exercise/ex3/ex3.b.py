@@ -1,3 +1,6 @@
+import argparse
+from pathlib import Path
+
 def prot_first_orf(seq) -> str:
     codon_groups = {
     "F": "UUU UUC",
@@ -43,11 +46,19 @@ def prot_first_orf(seq) -> str:
         protein.append(amino_acid)
     return ''.join(protein)
 
-if __name__ == "__main__" :
-    input_file = "/home/openclaw/internship/src/internship/tutorial_exercise/ex3/sequence.fasta"
-    output_file = "/home/openclaw/internship/src/internship/tutorial_exercise/ex3/protein.fasta"
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Translate the first AUG-started ORF in each FASTA sequence."
+    )
+    parser.add_argument("input_file", type=Path, help="input RNA/DNA FASTA file")
+    parser.add_argument("output_file", type=Path, help="output protein FASTA file")
+    return parser.parse_args()
 
-    with open(input_file, 'r') as f, open(output_file, 'w') as out:
+
+def main() -> None:
+    args = parse_args()
+
+    with args.input_file.open("r") as f, args.output_file.open("w") as out:
         records = f.read().split(">")
         for record in records:
             if not record:
@@ -61,3 +72,8 @@ if __name__ == "__main__" :
             out.write("\n")
             out.write(prot_first_orf(seq))
             out.write("\n")
+
+
+if __name__ == "__main__":
+    main()
+            

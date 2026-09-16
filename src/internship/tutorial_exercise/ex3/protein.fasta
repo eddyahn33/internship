@@ -1,20 +1,20 @@
-lcl|NC_059325.1_cds_YP_010229089.1_1 [gene=ND1] [locus_tag=LRP42_mgp13] [db_xref=GeneID:68929174] [protein=NADH dehydrogenase subunit 1] [transl_except=(pos:955..955,aa:TERM)] [protein_id=YP_010229089.1] [location=2744..3698] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229089.1_1 [gene=ND1] [locus_tag=LRP42_mgp13] [db_xref=GeneID:68929174] [protein=NADH dehydrogenase subunit 1] [transl_except=(pos:955..955,aa:TERM)] [protein_id=YP_010229089.1] [location=2744..3698] [gbkey=CDS]
 MFIINLFLLIIPILLAIAFLTLAERKILGYIQLRKGPNVVGPHGIIQPFADAIKLFIKEPLRPLTSSSSLYTIAPTLALTIALVI
-lcl|NC_059325.1_cds_YP_010229090.1_2 [gene=ND2] [locus_tag=LRP42_mgp12] [db_xref=GeneID:68929177] [protein=NADH dehydrogenase subunit 2] [transl_except=(pos:1042..1042,aa:TERM)] [protein_id=YP_010229090.1] [location=3913..4954] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229090.1_2 [gene=ND2] [locus_tag=LRP42_mgp12] [db_xref=GeneID:68929177] [protein=NADH dehydrogenase subunit 2] [transl_except=(pos:1042..1042,aa:TERM)] [protein_id=YP_010229090.1] [location=3913..4954] [gbkey=CDS]
 MLTIFMGTILTIISSH
-lcl|NC_059325.1_cds_YP_010229091.1_3 [gene=COX1] [locus_tag=LRP42_mgp11] [db_xref=GeneID:68929182] [protein=cytochrome c oxidase subunit I] [protein_id=YP_010229091.1] [location=5341..6882] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229091.1_3 [gene=COX1] [locus_tag=LRP42_mgp11] [db_xref=GeneID:68929182] [protein=cytochrome c oxidase subunit I] [protein_id=YP_010229091.1] [location=5341..6882] [gbkey=CDS]
 MFINR
-lcl|NC_059325.1_cds_YP_010229092.1_4 [gene=COX2] [locus_tag=LRP42_mgp10] [db_xref=GeneID:68929184] [protein=cytochrome c oxidase subunit II] [protein_id=YP_010229092.1] [location=7028..7711] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229092.1_4 [gene=COX2] [locus_tag=LRP42_mgp10] [db_xref=GeneID:68929184] [protein=cytochrome c oxidase subunit II] [protein_id=YP_010229092.1] [location=7028..7711] [gbkey=CDS]
 MAYPVQLGFQDAASPIIEELLYFHDHTLIIIFLISSLVLYIISLILTTELIHTNTIDAQEVETV
-lcl|NC_059325.1_cds_YP_010229093.1_5 [gene=ATP8] [locus_tag=LRP42_mgp09] [db_xref=GeneID:68929185] [protein=ATP synthase F0 subunit 8] [protein_id=YP_010229093.1] [location=7782..7988] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229093.1_5 [gene=ATP8] [locus_tag=LRP42_mgp09] [db_xref=GeneID:68929185] [protein=ATP synthase F0 subunit 8] [protein_id=YP_010229093.1] [location=7782..7988] [gbkey=CDS]
 MPQLDTSTWLITILSIILTLLIVFQLKISKFNYPLNPTIKNINKDLYTNP
-lcl|NC_059325.1_cds_YP_010229094.1_6 [gene=ATP6] [locus_tag=LRP42_mgp08] [db_xref=GeneID:68929161] [protein=ATP synthase F0 subunit 6] [protein_id=YP_010229094.1] [location=7943..8623] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229094.1_6 [gene=ATP6] [locus_tag=LRP42_mgp08] [db_xref=GeneID:68929161] [protein=ATP synthase F0 subunit 6] [protein_id=YP_010229094.1] [location=7943..8623] [gbkey=CDS]
 MNENLFASFITPTIVGIPIVILIIITPSIIFPSPTRLINNRLTSLQQ
-lcl|NC_059325.1_cds_YP_010229095.1_7 [gene=COX3] [locus_tag=LRP42_mgp07] [db_xref=GeneID:68929162] [protein=cytochrome c oxidase subunit III] [transl_except=(pos:784..784,aa:TERM)] [protein_id=YP_010229095.1] [location=8623..9406] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229095.1_7 [gene=COX3] [locus_tag=LRP42_mgp07] [db_xref=GeneID:68929162] [protein=cytochrome c oxidase subunit III] [transl_except=(pos:784..784,aa:TERM)] [protein_id=YP_010229095.1] [location=8623..9406] [gbkey=CDS]
 MTHQTHAYHMVNPSP
-lcl|NC_059325.1_cds_YP_010229096.1_8 [gene=ND3] [locus_tag=LRP42_mgp06] [db_xref=GeneID:68929186] [protein=NADH dehydrogenase subunit 3] [protein_id=YP_010229096.1] [location=9477..9824] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229096.1_8 [gene=ND3] [locus_tag=LRP42_mgp06] [db_xref=GeneID:68929186] [protein=NADH dehydrogenase subunit 3] [protein_id=YP_010229096.1] [location=9477..9824] [gbkey=CDS]
 MYIQKNTVLMNAASTL
-lcl|NC_059325.1_cds_YP_010229097.1_9 [gene=ND4L] [locus_tag=LRP42_mgp05] [db_xref=GeneID:68929187] [protein=NADH dehydrogenase subunit 4L] [protein_id=YP_010229097.1] [location=9896..10192] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229097.1_9 [gene=ND4L] [locus_tag=LRP42_mgp05] [db_xref=GeneID:68929187] [protein=NADH dehydrogenase subunit 4L] [protein_id=YP_010229097.1] [location=9896..10192] [gbkey=CDS]
 MPSISTNIILAFITALLGILIFRSHLISSLLCLEGIILSIFILSTLTILSLHFTTSFIIPILLLVFAACEAAVGLALLVTVSNTYGLDYIQNLNLLQC
-lcl|NC_059325.1_cds_YP_010229098.1_10 [gene=ND4] [locus_tag=LRP42_mgp04] [db_xref=GeneID:68929165] [protein=NADH dehydrogenase subunit 4] [transl_except=(pos:1378..1378,aa:TERM)] [protein_id=YP_010229098.1] [location=10186..11563] [gbkey=CDS]
+>lcl|NC_059325.1_cds_YP_010229098.1_10 [gene=ND4] [locus_tag=LRP42_mgp04] [db_xref=GeneID:68929165] [protein=NADH dehydrogenase subunit 4] [transl_except=(pos:1378..1378,aa:TERM)] [protein_id=YP_010229098.1] [location=10186..11563] [gbkey=CDS]
 MLKIIIPTIILFPVT
