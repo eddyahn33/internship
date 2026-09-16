@@ -30,11 +30,12 @@ def prot_first_orf(seq) -> str:
     }
 
     rna = seq.replace("T","U")        
-    for i in range(0,len(rna)-2):
-        if rna[i:i+3] == "AUG":
-            rna_start = i
-            break
+    rna_start = rna.find("AUG")
     protein = []
+ 
+    if rna_start == -1 :
+        return "None"
+ 
 
     for i in range(rna_start, len(rna)-2,3):
         amino_acid = codon_table[rna[i:i+3]]
