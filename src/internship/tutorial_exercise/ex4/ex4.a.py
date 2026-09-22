@@ -1,7 +1,11 @@
+"""
+a. 🌶️ CoCoPUTs database에서 human의 bicodon frequency를 다운로드 받아서 bicodon 버전의 codon adaptation index를 계산한다.
+b. CDS서열이 주어지면 CAI를 계산하는 함수를 만든다. 
+"""
+
 import argparse
 from pathlib import Path
 import re
-import pickle
 
 
 CODON_USAGE_PATTERN = re.compile(
@@ -75,11 +79,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> dict[str,int]:
     args = parse_args()
-    rscu_result = rscu(parse_codon_usage(args.input_file))
-    with open('rscu_result.pkl', 'wb') as tf:
-        pickle.dump(rscu_result, tf)
-    print(rscu_result)
-    return rscu_result
+    print(rscu(parse_codon_usage(args.input_file)))
+
 
 if __name__ == "__main__":
     main()
