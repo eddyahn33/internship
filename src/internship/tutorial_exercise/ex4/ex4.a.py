@@ -1,86 +1,88 @@
-"""
-a. 🌶️ CoCoPUTs database에서 human의 bicodon frequency를 다운로드 받아서 bicodon 버전의 codon adaptation index를 계산한다.
-b. CDS서열이 주어지면 CAI를 계산하는 함수를 만든다. 
-"""
-
-import argparse
+import math
+import csv
 from pathlib import Path
-import re
 
 
-CODON_USAGE_PATTERN = re.compile(
-    r"\b([AUCG]{3})\s+\d+(?:\.\d+)?\(\s*(\d+)\)"
-)
+def gmean(x):
+    return math.exp(sum(math.log(value) for value in x) / len(x))
 
 
-def parse_codon_usage(input_file: Path) -> dict[str, int]:
-    text = input_file.read_text(encoding="utf-8")
-    codon_counts = {
-        codon: int(count)
-        for codon, count in CODON_USAGE_PATTERN.findall(text)
-    }
-    return codon_counts
-
-
-def rscu(codon_counts) -> dict[str, int]:
-    codon_groups = {
-    "F": "UUU UUC",
-    "L": "UUA UUG CUU CUC CUA CUG",
-    "S": "UCU UCC UCA UCG AGU AGC",
-    "Y": "UAU UAC",
-    "Stop": "UAA UAG UGA",
-    "C": "UGU UGC",
-    "W": "UGG",
-    "P": "CCU CCC CCA CCG",
-    "H": "CAU CAC",
-    "Q": "CAA CAG",
-    "R": "CGU CGC CGA CGG AGA AGG",
-    "I": "AUU AUC AUA",
-    "M": "AUG",
-    "T": "ACU ACC ACA ACG",
-    "N": "AAU AAC",
-    "K": "AAA AAG",
-    "V": "GUU GUC GUA GUG",
-    "A": "GCU GCC GCA GCG",
-    "D": "GAU GAC",
-    "E": "GAA GAG",
-    "G": "GGU GGC GGA GGG",
+codon_groups = {
+    "F": ["UUU", "UUC"],
+    "L": ["UUA", "UUG", "CUU", "CUC", "CUA", "CUG"],
+    "S": ["UCU", "UCC", "UCA", "UCG", "AGU", "AGC"],
+    "Y": ["UAU", "UAC"],
+    "Stop": ["UAA", "UAG", "UGA"],
+    "C": ["UGU", "UGC"],
+    "W": ["UGG"],
+    "P": ["CCU", "CCC", "CCA", "CCG"],
+    "H": ["CAU", "CAC"],
+    "Q": ["CAA", "CAG"],
+    "R": ["CGU", "CGC", "CGA", "CGG", "AGA", "AGG"],
+    "I": ["AUU", "AUC", "AUA"],
+    "M": ["AUG"],
+    "T": ["ACU", "ACC", "ACA", "ACG"],
+    "N": ["AAU", "AAC"],
+    "K": ["AAA", "AAG"],
+    "V": ["GUU", "GUC", "GUA", "GUG"],
+    "A": ["GCU", "GCC", "GCA", "GCG"],
+    "D": ["GAU", "GAC"],
+    "E": ["GAA", "GAG"],
+    "G": ["GGU", "GGC", "GGA", "GGG"],
     }
     
-    codon_table = {
+codon_table = {
     codon: amino_acid
     for amino_acid, codons in codon_groups.items()
-    for codon in codons.split()
+    for codon in codons
     }
 
-    count_dict ={}
-    rscu_dict = {}
+bicodon_table = {}
+for codon1 in codon_table.keys():
+    for codon2 in codon_table.keys():
+        bicodon_table[codon1 + codon2] = codon_table[codon1] + codon_table[codon2]
 
-    for codon, count in codon_counts.items():
-        if codon_table[codon] in count_dict.keys():
-            count_dict[codon_table[codon]] += count
-        else:
-            count_dict[codon_table[codon]] = count
+bi_amino_list = []
+for amino1 in codon_groups.keys():
+    for amino2 in codon_groups.keys():
+        bi_amino_list.append(amino1 + amino2)
 
-    for codon, count in codon_counts.items():
-        codon_number = len(codon_groups[codon_table[codon]].replace(" ", ""))/3
-        rscu_dict[codon] = codon_number*count/count_dict[codon_table[codon]]
-
-    return rscu_dict
-
-  
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Calculate the RSCU for kazusa codon frequency file"
-    )
-    parser.add_argument("input_file", type=Path, help="input kazusa codon frequency .txt file")
-    return parser.parse_args()
+max_bicodon = {}
+per_bicodon_cai = {}
 
 
-def main() -> dict[str,int]:
-    args = parse_args()
-    print(rscu(parse_codon_usage(args.input_file)))
+with open('human_bicodon_frequency.csv','r') as f:
+    csv_dict_reader = csv.DictReader(f)
+    for row in csv_dict_reader:
+        freq_dict = row
+        freq_dict = {
+            key.replace("T", "U") : value
+            for key, value in freq_dict.items()
+        }
+
+for bi_amino in bi_amino_list:
+    bi_rscu_list = []
+    for bicodon in bicodon_table.keys():
+        if bicodon_table[bicodon] == bi_amino:
+            bi_rscu_list.append(int(freq_dict[bicodon]))
+    max_bicodon[bi_amino] = max(bi_rscu_list)
+
+for bicodon in bicodon_table.keys():
+    per_bicodon_cai[bicodon] = int(freq_dict[bicodon]) / max_bicodon[bicodon_table[bicodon]]
 
 
-if __name__ == "__main__":
+def main() -> float:
+    input_file = "/home/openclaw/internship/src/internship/tutorial_exercise/ex4/CDS.fasta"
+    bicai_list = []
+    with open(input_file, 'r') as f:
+        rna = f.read().replace("T","U").replace("\n","")
+
+    for i in range(0,len(rna)-5,3):
+        bicai_list.append(per_bicodon_cai[rna[i:i+6]])
+
+    print("BiCAI value is", gmean(bicai_list))
+    return gmean(bicai_list)
+
+
+if __name__ == "__main__" :
     main()
