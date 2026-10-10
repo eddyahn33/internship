@@ -30,10 +30,10 @@ codon_table = {
     for codon in codons
 }
 
-def random_syn_codon(str):
+def random_syn_codon(target):
         try:
-            list = codon_groups[codon_table[str.upper()]]
-            return(random.choice(list))
+            syn_list = codon_groups[codon_table[target.upper()]]
+            return(random.choice(syn_list))
         except:
             return("Not a codon")
 

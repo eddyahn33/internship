@@ -1,5 +1,4 @@
 import random
-from pathlib import Path
 import argparse
 
 codon_groups = {
@@ -54,8 +53,7 @@ def mutation(codon_list,mut_num):
     return "".join(result)
 
 def diff_syn_codon(codon):
-    change = codon_groups[codon_table[codon]].copy()
-    change.remove(codon)
+    change = [c for c in codon_groups[codon_table[codon]] if c != codon]
     return(random.choice(change))
 
 def parse_args() -> argparse.Namespace:
